@@ -5,10 +5,11 @@ const ValueList = ({ essentials }) => {
 
     return(
         <div>
+            <h1>values</h1>
             {
              essentials.map(item => (
                 <div key={item.name}>
-                    <h2>{item.value}</h2>
+                    <h2>{item.name}</h2>
                 </div>
             ))
             }
