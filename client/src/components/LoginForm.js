@@ -1,57 +1,57 @@
-import React, { useState } from 'react';
-import styled from 'styled-components';
-import axiosWithAuth  from '../utils/axiosWithAuth';
+// import React, { useState } from 'react';
+// import styled from 'styled-components';
+// import axiosWithAuth  from '../utils/axiosWithAuth';
 
-const FormInput = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-`;
+// const FormInput = styled.div`
+//   display: flex;
+//   flex-direction: column;
+//   width: 100%;
+// `;
 
-const LoginForm = props => {
+// const LoginForm = (props) => {
 
-  const [credentials, setCredentials] = useState({
+//   const [credentials, setCredentials] = useState({
 
-    username: '',
-    password: ''
+//     username: '',
+//     password: ''
 
-  });
-
-
-const handleChanges = event => {
-    setCredentials({
-          ...credentials,
-            [event.target.name]: event.target.value
-          })
-      }
-
-const loginToApp = event => {
-    event.preventDefault();
-    axiosWithAuth().post('https://bw-essentialism-1.herokuapp.com/api/auth/login', credentials)
-    .then(res => {
-        console.log(res);
-        window.localStorage.setItem('token', res.data.payload);
-      props.history.push('/essentials')
-    })
-    .catch(err => console.log(err))
-  }
+//   });
 
 
+// const handleChanges = event => {
+//     setCredentials({
+//           ...credentials,
+//             [event.target.name]: event.target.value
+//           })
+//       }
 
-  // once user is logged in create a GET request with the below endpoint
-  // `https://bw-essentialism-1.herokuapp.com/api/essentials/`
+// const loginToApp = event => {
+//     event.preventDefault();
+//     axiosWithAuth().post('https://bw-essentialism-1.herokuapp.com/api/auth/login', credentials)
+//     .then(res => {
+//         console.log(res);
+//         window.localStorage.setItem('token', res.data.payload);
+//         props.history.push('/essentials')
+//     })
+//     .catch(err => console.log(err), "A")
+//   }
 
 
-  return(
-    <div>
-      <form onSubmit={loginToApp}>
-        <input name="username" type="text" onChange={handleChanges} />
-        <input name="password" type="password" onChange={handleChanges} />
-        <button>Login</button>
-      </form>
-    </div>
-    )
-  }
+
+//   // once user is logged in create a GET request with the below endpoint
+//   // `https://bw-essentialism-1.herokuapp.com/api/essentials/`
 
 
-export default LoginForm;
+//   return(
+//     <div>
+//       <form onSubmit={loginToApp}>
+//         <input name="username" type="text" onChange={handleChanges} />
+//         <input name="password" type="password" onChange={handleChanges} />
+//         <button>Login</button>
+//       </form>
+//     </div>
+//     )
+//   }
+
+
+// export default LoginForm;

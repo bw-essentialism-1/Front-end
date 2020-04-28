@@ -11,6 +11,7 @@ import styled from "styled-components";
 import RegistrationForm from './RegistrationForm';
 import { Tween, Timeline } from 'react-gsap';
 import './LoginPage.css'
+import axiosWithAuth from "../utils/axiosWithAuth"
 
 const TopCard = styled.div`
   background-color: #C0C0C0;
@@ -27,41 +28,36 @@ display: flex;
 justify-content: space-around;
 `
 
-function LoginPage() {
+function LoginPage(props) {
 
   const [active, setActive] = useState(true)
 
-  const TimelineComponent = () => (
-    <Timeline
-      target={
-        <div>
-          <div className="App">
-            <header className="App-header">
+  const [credentials, setCredentials] = useState({
 
-              <TopCard>
-                <h1>Essentialism inc.</h1>
+    username: '',
+    password: ''
 
-                <div className={`loginCard ${active ?'activeTab':'tabContent'}`}>
-                    <h5>Login Here</h5>
+  });
 
-                    <div className="login">
-                      <LoginForm />
-                    </div>
 
-                </div>
-                <div className={`loginCard ${active ?'tabContent':'activeTab'}`}>
-                    <RegistrationForm setActive = {setActive} />
-                </div>
-              </TopCard>
-            </header>
-          </div>
-        </div>
+const handleChanges = event => {
+    setCredentials({
+          ...credentials,
+            [event.target.name]: event.target.value
+          })
       }
-    >
-      <Tween from={{ x: '-20px', opacity: .5 }} to={{ x: '0px' }} />
-      <Tween from={{ opacity: .5 }} to={{ opacity: 1 }} />
-    </Timeline>
-  );
+
+const loginToApp = event => {
+    event.preventDefault();
+    axiosWithAuth().post('https://bw-essentialism-1.herokuapp.com/api/auth/login', credentials)
+    .then(res => {
+        console.log(res);
+        window.localStorage.setItem('token', res.data.payload);
+        props.history.push('/essentials')
+    })
+    .catch(err => console.log(err), "A")
+  }
+
 
 
   return (
@@ -73,7 +69,35 @@ function LoginPage() {
         </Tab>
       </div>
 
-      <TimelineComponent></TimelineComponent>
+      
+      <div>
+          <div className="App">
+            <header className="App-header">
+
+              <TopCard>
+                <h1>Essentialism inc.</h1>
+
+                <div className={`loginCard ${active ?'activeTab':'tabContent'}`}>
+                    <h5>Login Here</h5>
+
+                    <div className="login">
+                    <div>
+                        <form onSubmit={loginToApp}>
+                            <input name="username" type="text" onChange={handleChanges} />
+                            <input name="password" type="password" onChange={handleChanges} />
+                            <button>Login</button>
+                        </form>
+                        </div>
+                    </div>
+
+                </div>
+                <div className={`loginCard ${active ?'tabContent':'activeTab'}`}>
+                    <RegistrationForm setActive = {setActive} />
+                </div>
+              </TopCard>
+            </header>
+          </div>
+        </div>
       <p>	&#9400; 2020, Essentialism inc.</p>
     </div>
 
