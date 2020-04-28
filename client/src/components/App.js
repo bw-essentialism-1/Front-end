@@ -3,7 +3,8 @@ import "./App.css";
 import LoginPage from "./LoginPage";
 import axiosWithAuth from "../utils/axiosWithAuth"
 import { Route } from "react-router-dom";
-import ValueList from "./ValueList"
+import ValueList from "./ValueList";
+import PrivateRoute from "./PrviateRoute"
 
 
 const App = () => {
@@ -28,13 +29,8 @@ useEffect(() => {
   
     return (
       <div className="App">
-        <h1>essentialism</h1>
-        <LoginPage />
-        
-        <Route exact path="/essentials">
-          <ValueList essentialsList={essentialsList}/>
-        </Route>
-      
+        <Route exact path ="/" component={LoginPage}/>
+        <PrivateRoute exact path="/essentials" component={ValueList} essentialsList={essentialsList}/>
       </div>
     );
   

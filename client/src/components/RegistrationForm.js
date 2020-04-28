@@ -52,7 +52,7 @@ const RegistrationForm = props => {
       <form onSubmit={submitForm}>
         <div>Username:</div>
         <input name="username" type="text" value={credentials.username} onChange={handleChanges} />
-        <div>Pasword: </div>
+        <div>Password: </div>
         <input name="password" type="password" value={credentials.password} onChange={handleChanges} />
         <br/>
         <button>Register</button>
