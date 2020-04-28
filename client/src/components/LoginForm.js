@@ -19,10 +19,10 @@ const LoginForm = props => {
 
 
 const handleChanges = event => {
-    setCredentials( {
+    setCredentials({
           ...credentials,
             [event.target.name]: event.target.value
-          } )
+          })
       }
 
 const loginToApp = event => {
