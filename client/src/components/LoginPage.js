@@ -10,8 +10,8 @@ import LoginForm from './LoginForm';
 import styled from "styled-components";
 import RegistrationForm from './RegistrationForm';
 import { Tween, Timeline } from 'react-gsap';
-import './LoginPage.css'
-import axiosWithAuth from "../utils/axiosWithAuth"
+// import './LoginPage.css';
+import axiosWithAuth from "../utils/axiosWithAuth";
 
 const TopCard = styled.div`
   background-color: #C0C0C0;
@@ -58,7 +58,7 @@ const loginToApp = event => {
     axiosWithAuth().post('https://bw-essentialism-1.herokuapp.com/api/auth/login', credentials)
     .then(res => {
         console.log(res);
-        window.localStorage.setItem('token', res.data.payload);
+        window.localStorage.setItem('token', res.data.token);
         props.history.push('/essentials')
     })
     .catch(err => console.log(err), "A")
@@ -75,7 +75,7 @@ const loginToApp = event => {
         </Tab>
       </div>
 
-      
+
       <div>
           <div className="App">
             <header className="App-header">
