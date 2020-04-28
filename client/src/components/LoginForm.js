@@ -1,8 +1,5 @@
 import React, { useState } from 'react';
-import { render } from 'react-dom';
 import styled from 'styled-components';
-
-import axios from 'axios';
 import axiosWithAuth  from '../utils/axiosWithAuth';
 
 const FormInput = styled.div`
@@ -34,7 +31,7 @@ const loginToApp = event => {
     .then(res => {
         console.log(res);
         window.localStorage.setItem('token', res.data.payload);
-      props.history.push('/nextpage')
+      props.history.push('/essentials')
     })
     .catch(err => console.log(err))
   }

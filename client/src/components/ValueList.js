@@ -1,25 +1,17 @@
-// import React from "react";
-// import { connect } from "react-redux";
-// import { getValues } from "../actions";
+import React from "react";
 
-// const ValueList = props => {
 
-//     return(
-//         <div>
-//             {props.values.map(item => (
-//                 <div key={item.id}>
-//                     <h2>{item.value}</h2>
-//                 </div>
-//             ))}
-//         </div>
-//     )
-// }
+const ValueList = () => {
 
-// const mapStateToProps = state => {
-//     return{
-//         values: state.values,
-//         error: state.error
-//     }
-// }
+    return(
+        <div>
+            {/* {essentials.map(item => (
+                <div key={item.name}>
+                    <h2>{item.value}</h2>
+                </div>
+            ))} */}
+        </div>        
+    )
+}
 
-// export default connect(mapStateToProps, { getValues })(ValueList);
+export default ValueList
