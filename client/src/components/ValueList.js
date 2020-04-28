@@ -1,11 +1,13 @@
 import React from "react";
 import axiosWithAuth from "../utils/axiosWithAuth"
 import { useState, useEffect } from "react";
+import ValueForm from "./ValueForm"
 
 
 const ValueList = () => {
 
-    const [essentialsList, setEssentialsList] = useState([])
+    const [essentialsList, setEssentialsList] = useState([]);
+    const [topEssentials, setTopEssentials] = useState([]);
     
     const fetchEssentials = () => {
         axiosWithAuth().get("https://bw-essentialism-1.herokuapp.com/api/essentials/")
@@ -22,16 +24,36 @@ const ValueList = () => {
         fetchEssentials();
     }, []);
 
+    const handleChanges = e => {
+
+        if(e.target.name === 'essentials' ? e.target.checked : e.target.value){
+
+            setTopEssentials({
+            [e.target.name]: e.target.value
+        });
+
+        }
+        
+    }
+
+    console.log(topEssentials)
+
+
     return(
         <div>
-            <h1>values</h1>
+            <h1>Choose What Matters To You</h1>
+            <form>
             {
              essentialsList.map(item => (
-                <div key={item.name}>
-                    <h2>{item.name}</h2>
+                <div>
+                    <input type="checkbox" name='essentials' value={item.name} onChange={handleChanges}/>
+                    <label>{item.name}</label><br/>
                 </div>
             ))
             }
+            <ValueForm/>
+            <button>Next ></button>
+            </form>
         </div>        
     )
 }

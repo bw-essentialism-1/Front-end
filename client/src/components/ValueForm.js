@@ -7,7 +7,7 @@ const ValueForm = props => {
     const [essential, setEssential] = useState(newEssential);
 
     const handleChanges = e => {
-        setEssential({...newEssential, [e.target.name]: e.target.value})
+        setEssential({[e.target.name]: e.target.value})
     }
 
     const handleSubmit = e => {
@@ -26,7 +26,7 @@ const ValueForm = props => {
             <form onSubmit={handleSubmit}>
                 <input type="text"
                         name="name"
-                        placeholder="Add an essential..."
+                        placeholder="Add values..."
                         value={essential.name}
                         onChange={handleChanges}
                         />
