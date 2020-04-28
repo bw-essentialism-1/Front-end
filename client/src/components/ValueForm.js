@@ -30,8 +30,8 @@ const ValueForm = props => {
                         value={essential.name}
                         onChange={handleChanges}
                         />
-                
-                <button type='submit'>add</button>
+
+                <button type='submit'>+</button>
             </form>
         </div>
     )

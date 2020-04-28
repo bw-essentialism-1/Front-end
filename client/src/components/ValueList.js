@@ -8,9 +8,10 @@ const ValueList = () => {
 
     const [essentialsList, setEssentialsList] = useState([]);
     const [topEssentials, setTopEssentials] = useState([]);
-    
+
     const fetchEssentials = () => {
-        axiosWithAuth().get("https://bw-essentialism-1.herokuapp.com/api/essentials/")
+        axiosWithAuth()
+        .get("https://bw-essentialism-1.herokuapp.com/api/essentials/")
         .then(res => {
             console.log(res.data)
             setEssentialsList(res.data);
@@ -19,7 +20,20 @@ const ValueList = () => {
             console.log(err.response)
         })
     }
-    
+
+    const deleteEssentials = () => {
+        axiosWithAuth()
+        .delete("https://bw-essentialism-1.herokuapp.com/api/")
+        .then(res => {
+            console.log(res.data)
+            setEssentialsList(res.data);
+        })
+        .catch(err => {
+            console.log(err.response)
+        })
+    }
+
+
     useEffect(() => {
         fetchEssentials();
     }, []);
@@ -33,7 +47,7 @@ const ValueList = () => {
         });
 
         }
-        
+
     }
 
     console.log(topEssentials)
@@ -46,15 +60,15 @@ const ValueList = () => {
             {
              essentialsList.map(item => (
                 <div>
-                    <input type="checkbox" name='essentials' value={item.name} onChange={handleChanges}/>
                     <label>{item.name}</label><br/>
-                </div>
+                    <button onClick={deleteEssentials}>X</button>
+              </div>
             ))
             }
             <ValueForm/>
             <button>Next ></button>
             </form>
-        </div>        
+        </div>
     )
 }
 
