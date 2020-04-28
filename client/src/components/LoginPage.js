@@ -28,6 +28,12 @@ display: flex;
 justify-content: space-around;
 `
 
+const FormInput = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+`;
+
 function LoginPage(props) {
 
   const [active, setActive] = useState(true)
@@ -81,12 +87,12 @@ const loginToApp = event => {
                     <h5>Login Here</h5>
 
                     <div className="login">
-                    <div>
-                        <form onSubmit={loginToApp}>
-                            <input name="username" type="text" onChange={handleChanges} />
-                            <input name="password" type="password" onChange={handleChanges} />
-                            <button>Login</button>
-                        </form>
+                        <div>
+                            <form onSubmit={loginToApp}>
+                                <input name="username" type="text" onChange={handleChanges} />
+                                <input name="password" type="password" onChange={handleChanges} />
+                                <button>Login</button>
+                            </form>
                         </div>
                     </div>
 
