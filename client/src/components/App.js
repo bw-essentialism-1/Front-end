@@ -30,7 +30,9 @@ useEffect(() => {
     return (
       <div className="App">
         <Route exact path ="/" component={LoginPage}/>
-        <PrivateRoute exact path="/essentials" component={ValueList} essentialsList={essentialsList}/>
+        <PrivateRoute exact path="/essentials">
+          <ValueList essentials={essentialsList}/>
+        </PrivateRoute>
       </div>
     );
   
