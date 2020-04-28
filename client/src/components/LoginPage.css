@@ -1,0 +1,116 @@
+.toggle {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+
+.Button{
+    background-color: inherit;
+    float: center;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+    width: 100%;
+    font-size: 2rem;
+    color: #470B97;
+    
+    
+}
+.Button:hover{
+    background-color: #ddd;
+}
+.active{
+    background-color: #470B97;
+    color: #C0C0C0;
+    border-left:2px #C0C0C0 solid;
+    border-right:2px #C0C0C0 solid;
+    border-top:2px #C0C0C0 solid;
+}
+.active:hover{
+    background-color: #470B97;
+    color: #C0C0C0;
+    /* border-left:2px #C0C0C0 solid;
+    border-right:2px #C0C0C0 solid; */
+}
+
+
+.activeTab{
+display: block;
+}
+
+.tabContent{
+    display: none;
+}
+
+.container {
+    background-color: #470B97;
+}
+
+.loginCard{
+    background-color: #C0C0C0;
+    border-top: 1px #470B97 solid;
+    border-bottom: 1px #470B97 solid;
+    padding: 2% 0;
+}
+
+.loginCard h5 {
+    padding: 0;
+    margin: 1% 0;
+}
+
+.login {
+    width: 100%;
+    /* display: flex;
+    justify-content: center; */
+}
+
+.container p {
+    font-size: .9rem;
+    position: relative;
+    color: #C0C0C0;
+}
+
+/* loginform stuff */
+
+.namestuff label {
+    display: flex;
+    justify-content: flex-start;
+    font-size: 1.2rem;
+    padding: 0 0 0 .2%;
+}
+
+.inputForm {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.inputForm input {
+    width: 100%;
+    border-radius: 3px;
+    border-style: none;
+    border: 1px #470B97 solid;
+    font-size: 1.1rem;
+    padding: 1%;
+
+}
+
+.buttonL button {
+    border: 1px #C0C0C0 solid;
+    background-color: #470B97;
+    color: #C0C0C0;
+    font-size: 1.2rem;
+    border-radius: 3px;
+    margin: 2% 0 0 0;
+    padding: 1% 2%;
+}
+
+.buttonL button:hover {
+    background-color: white;
+    color: #470B97;
+    border: 1px #470B97 solid;
+    transition: 0.4s;
+}

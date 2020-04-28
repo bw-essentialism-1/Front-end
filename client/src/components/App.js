@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import "./App.css";
-import ValueList from "./ValueList"
-import ValueForm from "./ValueForm";
+import LoginPage from "./LoginPage";
 
 
 class App extends Component {
@@ -9,8 +8,7 @@ class App extends Component {
     return (
       <div className="App">
         <h1>essentialism</h1>
-        <ValueList />
-        <ValueForm />
+        <LoginPage />
       </div>
     );
   }
