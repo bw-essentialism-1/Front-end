@@ -10,14 +10,14 @@ const ValueList = () => {
 
     const fetchEssentials = () => {
         axiosWithAuth()
-        .get("https://bw-essentialism-1.herokuapp.com/api/essentials/")
-        .then(res => {
-            console.log(res.data)
-            setEssentialsList(res.data);
-        })
-        .catch(err => {
-            console.log(err.response)
-        })
+            .get("https://bw-essentialism-1.herokuapp.com/api/essentials/")
+            .then(res => {
+                console.log(res.data)
+                setEssentialsList(res.data);
+            })
+            .catch(err => {
+                console.log(err.response)
+            })
     }
 
     const deleteEss = deletedEssential => {
@@ -29,13 +29,13 @@ const ValueList = () => {
 
     const deleteEssentials = essential => {
         axiosWithAuth()
-        .delete(`https://bw-essentialism-1.herokuapp.com/api/essentials/${essential.id}`)
-        .then(res => {
-            console.log(res.data)
-        })
-        .catch(err => {
-            console.log(err.response)
-        })
+            .delete(`https://bw-essentialism-1.herokuapp.com/api/essentials/${essential.id}`)
+            .then(res => {
+                console.log(res.data)
+            })
+            .catch(err => {
+                console.log(err.response)
+            })
     }
 
 

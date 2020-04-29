@@ -36,6 +36,7 @@ const FormInput = styled.div`
 
 function LoginPage(props) {
 
+
   const [active, setActive] = useState(true)
 
   const [credentials, setCredentials] = useState({
@@ -44,7 +45,6 @@ function LoginPage(props) {
     password: ''
 
   });
-
 
 const handleChanges = event => {
     setCredentials({
