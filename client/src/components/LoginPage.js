@@ -10,7 +10,7 @@ import LoginForm from './LoginForm';
 import styled from "styled-components";
 import RegistrationForm from './RegistrationForm';
 import { Tween, Timeline } from 'react-gsap';
-// import './LoginPage.css';
+import './LoginPage.css';
 import axiosWithAuth from "../utils/axiosWithAuth";
 
 const TopCard = styled.div`
@@ -36,6 +36,7 @@ const FormInput = styled.div`
 
 function LoginPage(props) {
 
+
   const [active, setActive] = useState(true)
 
   const [credentials, setCredentials] = useState({
@@ -44,7 +45,6 @@ function LoginPage(props) {
     password: ''
 
   });
-
 
 const handleChanges = event => {
     setCredentials({
@@ -74,6 +74,8 @@ const loginToApp = event => {
             <button className={`Button ${active ? '' : 'active'}`} onClick={() => setActive(false)}>Register</button>
         </Tab>
       </div>
+
+      
 
 
       <div>
