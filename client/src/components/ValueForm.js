@@ -15,6 +15,7 @@ const ValueForm = ({ fetchEssentials }) => {
         axiosWithAuth().post("https://bw-essentialism-1.herokuapp.com/api/essentials/", essential)
             .then(res => {
             fetchEssentials();
+            setEssential(newEssential)
             console.log(res)
         })
             .catch(err => {
