@@ -1,21 +1,20 @@
 import React, { useState } from 'react';
 import axiosWithAuth from "../utils/axiosWithAuth";
 
-const ValueForm = ({ fetchEssentials }) => {
-    const newEssential = {name: '', id: Date.now()}
+const ProjectForm = ({ fetchProjects }) => {
+    const newProject = {name: '', id: Date.now()}
 
-    const [essential, setEssential] = useState(newEssential);
+    const [project, setProject] = useState(newProject)
 
     const handleChanges = e => {
-        setEssential({[e.target.name]: e.target.value})
+        setProject({[e.target.name]: e.target.value})
     }
 
     const handleSubmit = e => {
         e.preventDefault();
-        axiosWithAuth().post("https://bw-essentialism-1.herokuapp.com/api/essentials/", essential)
+        axiosWithAuth().post("https://bw-essentialism-1.herokuapp.com/api/projects", project)
             .then(res => {
-            fetchEssentials();
-            console.log(res)
+            fetchProjects();
         })
             .catch(err => {
             console.log(err)
@@ -27,8 +26,8 @@ const ValueForm = ({ fetchEssentials }) => {
             <form onSubmit={handleSubmit}>
                 <input type="text"
                         name="name"
-                        placeholder="Add values..."
-                        value={essential.name}
+                        placeholder="Add projects..."
+                        value={project.name}
                         onChange={handleChanges}
                         />
 
@@ -37,6 +36,7 @@ const ValueForm = ({ fetchEssentials }) => {
         </div>
     )
 
+
 }
 
-export default ValueForm
+export default ProjectForm

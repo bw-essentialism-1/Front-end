@@ -1,3 +1,94 @@
-.App {
-  text-align: center;
+
+
+.listContainer {
+  display: flex;
+  width: auto;
+  flex-direction: row;
+  align-content: center;
+  margin-left: 22%;
+  margin-bottom: 10%;
+  height: auto;
+  margin-top: 2%;
+}
+
+.valueContainer{
+  display: flex;
+  margin-right: 10%;
+  border-radius: 10px;
+  box-shadow: 5px 10px 10px rgb(153, 153, 153);
+  border: 1px solid rgb(199, 199, 199)
+  
+  
+}
+
+.vals{
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.vList{
+  display: flex;
+  justify-content: space-between;
+}
+
+.vLabel{
+  padding-bottom: 3%;
+  width: 70%;
+}
+
+.vButton{
+  width: 20px;
+  height: 15px;
+  background-color: rgb(194, 1, 1);
+  color: white;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  padding-bottom: 17px;
+}
+
+.vButton:hover{
+  background-color: rgb(224, 35, 35);
+}
+
+
+.projectContainer{
+  display: flex;
+  margin-right: 10%;
+  border-radius: 10px;
+  box-shadow: 5px 10px 10px rgb(153, 153, 153);
+  border: 1px solid rgb(199, 199, 199);
+ 
+}
+
+.projs {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.pList {
+  display: flex;
+  justify-content: space-between;
+}
+
+.pLabel {
+  padding-bottom: 3%;
+  width: 70%;
+}
+
+.pButton{
+  width: 20px;
+  height: 15px;
+  background-color: rgb(194, 1, 1);
+  color: white;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  padding-bottom: 17px;
+}
+
+.pButton:hover{
+  background-color: rgb(224, 35, 35);
 }

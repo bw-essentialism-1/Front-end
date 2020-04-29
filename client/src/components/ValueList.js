@@ -7,7 +7,6 @@ import ValueForm from "./ValueForm"
 const ValueList = () => {
 
     const [essentialsList, setEssentialsList] = useState([]);
-    const [topEssentials, setTopEssentials] = useState([]);
 
     const fetchEssentials = () => {
         axiosWithAuth()
@@ -21,12 +20,18 @@ const ValueList = () => {
         })
     }
 
-    const deleteEssentials = () => {
+    const deleteEss = deletedEssential => {
+        const newEssentials = [...essentialsList];
+        const deletedEssentials = newEssentials.filter(item => item.id !== deletedEssential)
+        setEssentialsList(deletedEssentials);
+        console.log(deletedEssentials)
+      }
+
+    const deleteEssentials = essential => {
         axiosWithAuth()
-        .delete("https://bw-essentialism-1.herokuapp.com/api/")
+        .delete(`https://bw-essentialism-1.herokuapp.com/api/essentials/${essential.id}`)
         .then(res => {
             console.log(res.data)
-            setEssentialsList(res.data);
         })
         .catch(err => {
             console.log(err.response)
@@ -38,35 +43,27 @@ const ValueList = () => {
         fetchEssentials();
     }, []);
 
-    const handleChanges = e => {
 
-        if(e.target.name === 'essentials' ? e.target.checked : e.target.value){
-
-            setTopEssentials({
-            [e.target.name]: e.target.value
-        });
-
-        }
-
-    }
-
-    console.log(topEssentials)
+    console.log(essentialsList)
 
 
     return(
-        <div>
-            <h1>Choose What Matters To You</h1>
+        <div className="vals">
+            <h1>Essentials</h1>
             <form>
             {
              essentialsList.map(item => (
-                <div>
-                    <label>{item.name}</label><br/>
-                    <button onClick={deleteEssentials}>X</button>
+                <div className="vList">
+                    <label className="vLabel">{item.name}</label>
+                    <button className="vButton" onClick={(e) => {
+                    e.stopPropagation();
+                    deleteEssentials(item)
+                    deleteEss(item.id)
+                  }}>x</button>
               </div>
             ))
             }
-            <ValueForm/>
-            <button>Next ></button>
+            <ValueForm fetchEssentials={fetchEssentials}/>
             </form>
         </div>
     )
