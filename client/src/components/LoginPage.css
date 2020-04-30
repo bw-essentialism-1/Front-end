@@ -1,3 +1,27 @@
+
+.container {
+    text-align: center;
+    background-color: #470B97;
+    border: 1px #470B97 solid;
+}
+
+.container p {
+    font-size: .9rem;
+    position: relative;
+    color: #C0C0C0;
+}
+
+.App-header {
+    background-color: #470B97;
+    min-height: 85vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
+  }
+
 .toggle {
     display: flex;
     justify-content: center;
@@ -16,8 +40,8 @@
     width: 100%;
     font-size: 2rem;
     color: #470B97;
-
-
+    
+    
 }
 .Button:hover{
     background-color: #ddd;
@@ -45,10 +69,6 @@ display: block;
     display: none;
 }
 
-.container {
-    background-color: #470B97;
-}
-
 .loginCard{
     background-color: #C0C0C0;
     border-top: 1px #470B97 solid;
@@ -67,10 +87,12 @@ display: block;
     justify-content: center; */
 }
 
-.container p {
-    font-size: .9rem;
-    position: relative;
-    color: #C0C0C0;
+/* .errors{
+    border: 1px red solid;
+} */
+
+.errors p {
+    color: red !important;
 }
 
 /* loginform stuff */
@@ -88,7 +110,7 @@ display: block;
     width: 100%;
 }
 
-.inputForm input {
+input {
     width: 100%;
     border-radius: 3px;
     border-style: none;
@@ -98,7 +120,7 @@ display: block;
 
 }
 
-.buttonL button {
+.login button {
     border: 1px #C0C0C0 solid;
     background-color: #470B97;
     color: #C0C0C0;
@@ -108,7 +130,33 @@ display: block;
     padding: 1% 2%;
 }
 
-.buttonL button:hover {
+.login button:disabled {
+    display: none;
+}
+
+.login button:hover {
+    background-color: white;
+    color: #470B97;
+    border: 1px #470B97 solid;
+    transition: 0.4s;
+}
+
+.registration button {
+    border: 1px #C0C0C0 solid;
+    background-color: #470B97;
+    color: #C0C0C0;
+    font-size: 1.2rem;
+    border-radius: 3px;
+    margin: 2% 0 0 0;
+    padding: 1% 2%;
+}
+
+
+.registration button:disabled {
+    display: none;
+}
+
+.registration button:hover {
     background-color: white;
     color: #470B97;
     border: 1px #470B97 solid;
