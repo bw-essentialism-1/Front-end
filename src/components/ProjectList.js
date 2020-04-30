@@ -24,8 +24,8 @@ const ProjectList = () => {
         console.log(deletedProjects);
       }
 
-    const deleteProjects = async project => {
-        await axiosWithAuth() 
+    const deleteProjects = project => {
+        axiosWithAuth() 
             .delete(`https://bw-essentialism-1.herokuapp.com/api/projects/${project.id}`)
             .then(res => {
                 window.location.reload();

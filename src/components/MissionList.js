@@ -30,7 +30,6 @@ const MissionList = () => {
             .put("https://bw-essentialism-1.herokuapp.com/api/mission", missionToEdit)
             .then(res => {
                 e.preventDefault();
-                window.location.reload();
                 setEditing(false);
             })
             .catch(err => {
