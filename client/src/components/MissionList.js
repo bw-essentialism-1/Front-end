@@ -25,13 +25,13 @@ const MissionList = () => {
         setMissionToEdit(mission)
     }
 
-    const saveEdit = async mission => {
-        await axiosWithAuth()
-            .put("https://bw-essentialism-1.herokuapp.com/api/auth/mission", mission)
+    const saveEdit = e => {
+        axiosWithAuth()
+            .put("https://bw-essentialism-1.herokuapp.com/api/mission", missionToEdit)
             .then(res => {
-                setEditing(false)
-                axiosWithAuth()
-                fetchMissions()
+                e.preventDefault();
+                window.location.reload();
+                setEditing(false);
             })
             .catch(err => {
                 console.log(err.response)
@@ -44,7 +44,7 @@ const MissionList = () => {
     }, []);
 
     return(
-        <div className="missions">
+    <div className="missions">
         <h1>Mission</h1>
         <form>
                { 
@@ -59,7 +59,6 @@ const MissionList = () => {
             </div>  
                 ))
                 } 
-                <ul>
         {editing && (
         <form onSubmit={saveEdit}>
           <label>
@@ -77,9 +76,8 @@ const MissionList = () => {
           </div>
         </form>
       )}
-                </ul>
         </form>
-        </div>
+    </div>
     )
 }
 
