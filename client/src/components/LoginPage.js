@@ -5,13 +5,16 @@
 //LoginForm
 //RegistrationForm
 
-import React, {useState} from 'react';
-import LoginForm from './LoginForm';
+import React, {useState, useEffect} from 'react';
+// import LoginForm from './LoginForm';
 import styled from "styled-components";
 import RegistrationForm from './RegistrationForm';
-import { Tween, Timeline } from 'react-gsap';
-import './LoginPage.css';
-import axiosWithAuth from "../utils/axiosWithAuth";
+import User from './User'
+// import { Tween, Timeline } from 'react-gsap';
+import './LoginPage.css'
+import axiosWithAuth from "../utils/axiosWithAuth"
+import axios from 'axios'
+import * as yup from 'yup'
 
 const TopCard = styled.div`
   background-color: #C0C0C0;
@@ -28,43 +31,142 @@ display: flex;
 justify-content: space-around;
 `
 
-const FormInput = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-`;
+// const FormInput = styled.div`
+//   display: flex;
+//   flex-direction: column;
+//   width: 100%;
+// `;
+
+const url = 'https://reqres.in/api/users'
+console.log(url)
+
+const initialFormValues = {
+  username: '',
+  password: '',
+  // confirmPassword: ''
+}
+
+const initialFormErrors = {
+  username: '',
+  password: '',
+  // confirmPassword: ''
+}
+
+const formSchema = yup.object({
+  username: yup
+    .string()
+    .min(3, 'userame must be atleast 3 characters')
+    .required('userName is required'),
+  password: yup
+    .string()
+    .min(6, 'Password Must be at least 6 characters long')
+    .required('Password is Required'),
+  // confirmPassword: yup
+  //   .string()
+  //   .oneOf([yup.ref('password'), null], 'Passwords must match')
+})
+
 
 function LoginPage(props) {
 
+  const [users, setUsers] = useState([])
 
   const [active, setActive] = useState(true)
+  const [credentials, setCredentials] = useState(initialFormValues);
 
-  const [credentials, setCredentials] = useState({
+  const [formDisabled, setFormDisabled] = useState(true)
+  const [formErrors, setFormErrors] = useState(initialFormErrors)
 
-    username: '',
-    password: ''
 
-  });
+  const handleChanges = event => {
+    // setCredentials({
+    //       ...credentials,
+    //         [event.target.name]: event.target.value
+    //       })
 
-const handleChanges = event => {
-    setCredentials({
-          ...credentials,
-            [event.target.name]: event.target.value
-          })
-      }
+    const name = event.target.name
+    const value = event.target.value
 
-const loginToApp = event => {
+    yup
+      .reach(formSchema, name)
+      .validate(value)
+      .then(valid => {
+        setFormErrors({
+          ...formErrors,
+          [name]: '',
+        })
+      })
+      .catch(err => {
+        setFormErrors({
+          ...formErrors,
+          [name]: err.errors[0]
+        })
+      });
+
+      setCredentials({
+        ...credentials,
+        [name]: value,
+     })
+  }
+
+  const loginToApp = event => {
     event.preventDefault();
     axiosWithAuth().post('https://bw-essentialism-1.herokuapp.com/api/auth/login', credentials)
     .then(res => {
-        console.log(res);
-        window.localStorage.setItem('token', res.data.token);
-        props.history.push('/essentials')
+      // console.log(res)
+      window.localStorage.setItem('token', res.data.token);
+      props.history.push('/essentials')
+      
     })
     .catch(err => console.log(err), "A")
   }
 
+  useEffect(() => {
+    formSchema.isValid(credentials)
+      .then(valid => {
+        setFormDisabled(!valid)
+      })
+  }, [credentials])
 
+
+  //mock data//
+  const getUsers = () => {
+    axios.get(`${url}`)
+      .then(res => {
+        console.log(res.data.data)
+        setUsers(res.data.data)
+      })
+      .catch(err => {
+        debugger
+      })
+  }
+
+  useEffect(() => {
+    getUsers();
+  }, []);
+
+
+  //gsap//
+  // const TimelineComponent = () => (
+  //   <Timeline
+  //     target={
+  //       <div>
+  //         <div className='user-container'>
+  //           {
+  //             users.map(user => {
+  //               return(
+  //                 <User key={user.id} details={user}/>
+  //               )
+  //             })
+  //           }
+  //         </div>
+  //       </div>
+  //     }
+  //   >
+  //     <Tween from={{ x: '-20px', opacity: .5 }} to={{ x: '0px' }} />
+  //     <Tween from={{ opacity: .5 }} to={{ opacity: 1}} />
+  //   </Timeline>
+  // );
 
   return (
     <div className='container'>
@@ -75,37 +177,57 @@ const loginToApp = event => {
         </Tab>
       </div>
 
-      
+      <div className="App">
+        <header className="App-header">
 
+          <TopCard>
+            <h1>Essentialism inc.</h1>
 
-      <div>
-          <div className="App">
-            <header className="App-header">
+            <div className={`loginCard ${active ?'activeTab':'tabContent'}`}>
+              <h5>Login Here</h5>
 
-              <TopCard>
-                <h1>Essentialism inc.</h1>
+              <div className='errors'>
+                <p>{formErrors.username}</p>
+                <p>{formErrors.password}</p>
+            </div>
 
-                <div className={`loginCard ${active ?'activeTab':'tabContent'}`}>
-                    <h5>Login Here</h5>
-
-                    <div className="login">
-                        <div>
-                            <form onSubmit={loginToApp}>
-                                <input name="username" type="text" onChange={handleChanges} />
-                                <input name="password" type="password" onChange={handleChanges} />
-                                <button>Login</button>
-                            </form>
-                        </div>
-                    </div>
-
+              <div className="login">
+                <div>
+                  <form onSubmit={loginToApp}>
+                    <div>Username:</div>
+                    <input value={credentials.username} name="username" type="text"  placeholder=' username' onChange={handleChanges} />
+                    <div>Password: </div>
+                    <input value={credentials.password} name="password" type="password"  placeholder=' password' onChange={handleChanges} />
+                    <button disabled={formDisabled}>Login</button>
+                  </form>
                 </div>
-                <div className={`loginCard ${active ?'tabContent':'activeTab'}`}>
-                    <RegistrationForm setActive = {setActive} />
-                </div>
-              </TopCard>
-            </header>
-          </div>
-        </div>
+              </div>
+
+            </div>
+            <div className={`loginCard ${active ?'tabContent':'activeTab'}`}>
+                <RegistrationForm 
+                  setActive={setActive}
+                  credentials={credentials}
+                  handleChanges={handleChanges}
+                  formDisabled={formDisabled}
+                  formErrors={formErrors}
+                />
+            </div>
+          </TopCard>
+          {/* <TimelineComponent></TimelineComponent>   */}
+          <div className='user-container'>
+            {
+              users.map(user => {
+                return(
+                  <User key={user.id} details={user}/>
+                )
+              })
+            }
+          </div> 
+        </header>
+      </div>
+
+
       <p>	&#9400; 2020, Essentialism inc.</p>
     </div>
 
