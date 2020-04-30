@@ -12,7 +12,8 @@ const ProjectForm = ({ fetchProjects }) => {
         axiosWithAuth().post("https://bw-essentialism-1.herokuapp.com/api/projects", project)
             .then(res => {
             fetchProjects();
-            setProject(newProject)
+            setProject(newProject);
+            console.log(res, "PROJECTS POST" )
         })
             .catch(err => {
             console.log(err)
