@@ -4,39 +4,22 @@ import axiosWithAuth from '../utils/axiosWithAuth'
 
 //copy code, push, merge to master, then everyone can git pull
 
-const MissionForm = () => {
+const MissionForm = ({ fetchMissions }) => {
 
-  const [mission, setMission] = useState({
-      mission: ''
-});
+const newMission = {mission: '', id: Date.now()}
 
+const [mission, setMission] = useState(newMission)
 
-  const fetchMission = () => {
-      axiosWithAuth()
-      .get("https://bw-essentialism-1.herokuapp.com/api/mission/")
-      .then(res => {
-          console.log(res.data, "hello")
-          setMission(res.data);
-      })
-      .catch(err => {
-          console.log(err.response)
-      })
-  }
-
-  useEffect(() => {
-    fetchMission()
-  }, [])
-
-
-  const postMission = () => {
+const postMission = e => {
+    e.preventDefault();
     axiosWithAuth()
-    .post("https://bw-essentialism-1.herokuapp.com/api/mission/", mission)
+    .put("https://bw-essentialism-1.herokuapp.com/api/mission", mission)
     .then(res => {
         console.log(res.data)
-        setMission(res.data);
+        setMission(newMission);
     })
     .catch(err => {
-        console.log(err.response)
+        console.log(err)
     })
   }
 
@@ -46,13 +29,14 @@ const MissionForm = () => {
 
   return (
     <div>
-          <textarea name="mission" form="missionform">Enter Your Mission Statement</textarea>
-          <form onSubmit={postMission} id="missionform">
-               <input type="submit"
+          <form onSubmit={postMission}>
+               <input type="text"
                       name="mission"
                       value={mission.mission}
                       onChange={handleChanges}
+                      placeholder="Add a mission..."
                       />
+                <button>+</button>
           </form>
     </div>
   )

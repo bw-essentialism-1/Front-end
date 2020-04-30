@@ -2,13 +2,10 @@ import React, { useState } from 'react';
 import axiosWithAuth from "../utils/axiosWithAuth";
 
 const ProjectForm = ({ fetchProjects }) => {
+   
     const newProject = {name: '', id: Date.now()}
 
     const [project, setProject] = useState(newProject)
-
-    const handleChanges = e => {
-        setProject({[e.target.name]: e.target.value})
-    }
 
     const handleSubmit = e => {
         e.preventDefault();
@@ -20,6 +17,10 @@ const ProjectForm = ({ fetchProjects }) => {
             .catch(err => {
             console.log(err)
         })
+    }
+
+    const handleChanges = e => {
+        setProject({[e.target.name]: e.target.value})
     }
 
     return (

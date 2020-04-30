@@ -39,9 +39,7 @@ const formSchema = yup.object({
 
 const RegistrationForm = props => {
 
-
-
-    console.log(props)
+console.log(props)
 
     const [credentials, setCredentials] = useState({
         username: '',

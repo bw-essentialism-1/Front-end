@@ -5,7 +5,7 @@ import axiosWithAuth from "../utils/axiosWithAuth"
 import { Route } from "react-router-dom";
 import ValueList from "./ValueList";
 import PrivateRoute from "./PrviateRoute"
-import MissionForm from "./MissionForm"
+import MissionList from "./MissionList"
 import ProjectList from "./ProjectList"
 
 
@@ -22,8 +22,11 @@ const App = () => {
             <div className="projectContainer">
             <ProjectList/>
             </div>
+            <div className="missionContainer">
+              <MissionList/>
+            </div>
           </div>
-          <MissionForm />
+         
         </PrivateRoute>
       </div>
     );
