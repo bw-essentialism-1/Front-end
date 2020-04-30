@@ -92,3 +92,43 @@
 .pButton:hover{
   background-color: rgb(224, 35, 35);
 }
+
+.missionContainer{
+  display: flex;
+  margin-right: 10%;
+  border-radius: 10px;
+  box-shadow: 5px 10px 10px rgb(153, 153, 153);
+  border: 1px solid rgb(199, 199, 199);
+ 
+}
+
+.missions {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.mList {
+  display: flex;
+  justify-content: space-between;
+}
+
+.mLabel {
+  padding-bottom: 3%;
+  width: 70%;
+}
+
+.mButton{
+  width: 20px;
+  height: 15px;
+  background-color: rgb(194, 1, 1);
+  color: white;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  padding-bottom: 17px;
+}
+
+.mButton:hover{
+  background-color: rgb(224, 35, 35);
+}
