@@ -17,12 +17,12 @@ const ProjectList = () => {
             })
     }
 
-    // const deleteProj = deletedProj => {
-    //     const newProjs = [...projects];
-    //     const deletedProjects = newProjs.filter(item => item.id !== deletedProj)
-    //     setProjects(deletedProjects);
-    //     console.log(deletedProjects);
-    //   }
+    const deleteProj = deletedProj => {
+        const newProjs = [...projects];
+        const deletedProjects = newProjs.filter(item => item.id !== deletedProj)
+        setProjects(deletedProjects);
+        console.log(deletedProjects);
+      }
 
     const deleteProjects = async project => {
         await axiosWithAuth() 
@@ -52,7 +52,7 @@ const ProjectList = () => {
                     e.preventDefault();
                     e.stopPropagation();
                     deleteProjects(item);
-                    //deleteProj(item.id)
+                    deleteProj(item.id)
                   }}>x</button>
               </div>
             ))

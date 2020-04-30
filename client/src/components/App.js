@@ -26,7 +26,7 @@ const App = () => {
               <MissionList/>
             </div>
           </div>
-         <YOUR-COMPONENT/>
+  
         </PrivateRoute>
       </div>
     );
