@@ -54,16 +54,14 @@ const MissionList = () => {
                 <button className="mButton" onClick={(e) => {
                     e.preventDefault();
                     e.stopPropagation();
-                    
-                    //deleteProj(item.id)
-                  }}>e</button>  
+                    editMission(item);
+                  }}>edit</button>  
             </div>  
                 ))
                 } 
                 <ul>
-                {editing && (
+        {editing && (
         <form onSubmit={saveEdit}>
-          <legend>edit mission</legend>
           <label>
             mission:
             <input
