@@ -54,7 +54,7 @@ const MissionList = () => {
                 <button className="mButton" onClick={(e) => {
                     e.preventDefault();
                     e.stopPropagation();
-                    editMission();
+                    editMission(item);
                   }}>edit</button>  
             </div>  
                 ))
