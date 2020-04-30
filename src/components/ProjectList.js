@@ -28,7 +28,6 @@ const ProjectList = () => {
         axiosWithAuth() 
             .delete(`https://bw-essentialism-1.herokuapp.com/api/projects/${project.id}`)
             .then(res => {
-                window.location.reload();
                 console.log(res)
             })
             .catch(err => {
