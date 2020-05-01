@@ -10,7 +10,7 @@ import React, {useState, useEffect} from 'react';
 import styled from "styled-components";
 import RegistrationForm from './RegistrationForm';
 import User from './User'
-// import { Tween, Timeline } from 'react-gsap';
+import { Tween, Timeline } from 'react-gsap';
 import './LoginPage.css'
 import axiosWithAuth from "../utils/axiosWithAuth"
 import axios from 'axios'
@@ -79,11 +79,6 @@ function LoginPage(props) {
 
 
   const handleChanges = event => {
-    // setCredentials({
-    //       ...credentials,
-    //         [event.target.name]: event.target.value
-    //       })
-
     const name = event.target.name
     const value = event.target.value
 
@@ -146,20 +141,13 @@ function LoginPage(props) {
   }, []);
 
 
+
   //gsap//
   // const TimelineComponent = () => (
   //   <Timeline
   //     target={
   //       <div>
-  //         <div className='user-container'>
-  //           {
-  //             users.map(user => {
-  //               return(
-  //                 <User key={user.id} details={user}/>
-  //               )
-  //             })
-  //           }
-  //         </div>
+
   //       </div>
   //     }
   //   >
@@ -167,6 +155,23 @@ function LoginPage(props) {
   //     <Tween from={{ opacity: .5 }} to={{ opacity: 1}} />
   //   </Timeline>
   // );
+
+  const TweenComponent = () => (
+    <Tween from={{ x: '100px', rotation: -360 }}>
+      <div>
+        <div className='user-container'>
+          {
+            users.map(user => {
+              return(
+                <User key={user.id} details={user}/>
+              )
+            })
+          }
+        </div> 
+      </div>
+    </Tween>
+  );
+  
 
   return (
     <div className='container'>
@@ -215,7 +220,8 @@ function LoginPage(props) {
             </div>
           </TopCard>
           {/* <TimelineComponent></TimelineComponent>   */}
-          <div className='user-container'>
+          <TweenComponent></TweenComponent>
+          {/* <div className='user-container'>
             {
               users.map(user => {
                 return(
@@ -223,7 +229,7 @@ function LoginPage(props) {
                 )
               })
             }
-          </div> 
+          </div>  */}
         </header>
       </div>
 
