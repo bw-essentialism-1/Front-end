@@ -2,7 +2,7 @@ import React from "react";
 import { Route, Redirect } from "react-router-dom";
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
-  console.log(localStorage.getItem("token"));
+  console.log("token", localStorage.getItem("token"));
   return (
     <Route
       {...rest}
