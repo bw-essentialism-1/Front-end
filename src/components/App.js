@@ -14,8 +14,8 @@ const App = () => {
   
     return (
       <div className="App">
-        <Route path ="/" component={LoginPage}/>
-        <PrivateRoute exact path="/essentials">
+        <Route exact path ="/" component={LoginPage}/>
+        <PrivateRoute path="/essentials">
 
           <NewComponent/>
   
