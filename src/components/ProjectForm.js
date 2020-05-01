@@ -3,17 +3,17 @@ import axiosWithAuth from "../utils/axiosWithAuth";
 
 const ProjectForm = ({ fetchProjects }) => {
    
-    const newProject = {name: '', id: Date.now()}
+    // const newProject = {name: '', id: Date.now()}
 
-    const [project, setProject] = useState(newProject)
+    const [project, setProject] = useState({name: ''})
 
     const handleSubmit = e => {
         e.preventDefault();
         axiosWithAuth().post("https://bw-essentialism-1.herokuapp.com/api/projects", project)
             .then(res => {
             fetchProjects();
-            setProject(newProject);
-            console.log(res, "PROJECTS POST" )
+            // setProject(newProject);
+            // console.log(res, "PROJECTS POST" )
         })
             .catch(err => {
             console.log(err)
