@@ -114,7 +114,7 @@ function LoginPage(props) {
     axiosWithAuth().post('https://bw-essentialism-1.herokuapp.com/api/auth/login', credentials)
     .then(res => {
       // console.log(res)
-      window.localStorage.setItem('token', res.data.token);
+      localStorage.setItem('token', res.data.token);
       props.history.push('/essentials')
       
     })
