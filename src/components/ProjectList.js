@@ -29,6 +29,7 @@ const ProjectList = () => {
             .delete(`https://bw-essentialism-1.herokuapp.com/api/projects/${project.id}`)
             .then(res => {
                 // console.log(res)
+                fetchProjects();
             })
             .catch(err => {
                 console.log(err.response)

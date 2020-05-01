@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import axiosWithAuth from "../utils/axiosWithAuth";
 
 const ValueForm = ({ fetchEssentials }) => {
-    const newEssential = {name: '', id: Date.now()}
+    // const newEssential = {name: '', id: Date.now()}
 
-    const [essential, setEssential] = useState(newEssential);
+    const [essential, setEssential] = useState({name: ''});
 
     const handleChanges = e => {
         setEssential({[e.target.name]: e.target.value})
@@ -15,8 +15,8 @@ const ValueForm = ({ fetchEssentials }) => {
         axiosWithAuth().post("https://bw-essentialism-1.herokuapp.com/api/essentials/", essential)
             .then(res => {
             fetchEssentials();
-            setEssential(newEssential)
-            console.log(res)
+            // setEssential(newEssential)
+            // console.log(res)
         })
             .catch(err => {
             console.log(err)

@@ -20,17 +20,18 @@ const ValueList = () => {
             })
     }
 
-    const deleteEss = deletedEssential => {
-        const newEssentials = [...essentialsList];
-        const deletedEssentials = newEssentials.filter(item => item.id !== deletedEssential)
-        setEssentialsList(deletedEssentials);
-        console.log(deletedEssentials)
-      }
+    // const deleteEss = deletedEssential => {
+    //     const newEssentials = [...essentialsList];
+    //     const deletedEssentials = newEssentials.filter(item => item.id !== deletedEssential)
+    //     setEssentialsList(deletedEssentials);
+    //     console.log(deletedEssentials)
+    //   }
 
     const deleteEssentials = essential => {
         axiosWithAuth()
             .delete(`https://bw-essentialism-1.herokuapp.com/api/essentials/${essential.id}`)
             .then(res => {
+                fetchEssentials();
                 console.log(res.data)
             })
             .catch(err => {
@@ -58,7 +59,7 @@ const ValueList = () => {
                     <button className="vButton" onClick={(e) => {
                     e.stopPropagation();
                     deleteEssentials(item)
-                    deleteEss(item.id)
+                    // deleteEss(item.id)
                   }}>x</button>
               </div>
             ))
