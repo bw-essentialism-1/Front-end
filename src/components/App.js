@@ -15,7 +15,7 @@ const App = () => {
       <div className="App">
         <Route exact path ="/" component={LoginPage}/>
         <PrivateRoute exact path="/essentials">
-          <div className="listContainer">
+          {/* <div className="listContainer">
             <div className="valueContainer">
               <ValueList />
             </div>
@@ -25,7 +25,8 @@ const App = () => {
             <div className="missionContainer">
               <MissionList/>
             </div>
-          </div>
+          </div> */}
+          <h1>Hello</h1>
   
         </PrivateRoute>
       </div>

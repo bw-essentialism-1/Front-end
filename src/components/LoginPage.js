@@ -111,7 +111,7 @@ function LoginPage(props) {
 
   const loginToApp = event => {
     event.preventDefault();
-    axiosWithAuth().post('https://bw-essentialism-1.herokuapp.com/api/auth/login', credentials)
+    axiosWithAuth().post('https://bw-essentialism-1.herokuapp.com/api/login', credentials)
     .then(res => {
       // console.log(res)
       window.localStorage.setItem('token', res.data.token);
