@@ -130,20 +130,20 @@ function LoginPage(props) {
 
 
   //mock data//
-  // const getUsers = () => {
-  //   axios.get(`${url}`)
-  //     .then(res => {
-  //       console.log(res.data.data)
-  //       setUsers(res.data.data)
-  //     })
-  //     .catch(err => {
-  //       console.log(err)
-  //     })
-  // }
+  const getUsers = () => {
+    axios.get(`${url}`)
+      .then(res => {
+        console.log(res.data.data)
+        setUsers(res.data.data)
+      })
+      .catch(err => {
+        debugger
+      })
+  }
 
-  // useEffect(() => {
-  //   getUsers();
-  // }, []);
+  useEffect(() => {
+    getUsers();
+  }, []);
 
 
   //gsap//
@@ -215,7 +215,7 @@ function LoginPage(props) {
             </div>
           </TopCard>
           {/* <TimelineComponent></TimelineComponent>   */}
-          {/* <div className='user-container'>
+          <div className='user-container'>
             {
               users.map(user => {
                 return(
@@ -223,7 +223,7 @@ function LoginPage(props) {
                 )
               })
             }
-          </div>  */}
+          </div> 
         </header>
       </div>
 
