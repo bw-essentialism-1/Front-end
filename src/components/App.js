@@ -7,6 +7,7 @@ import ValueList from "./ValueList";
 import PrivateRoute from "./PrviateRoute"
 import MissionList from "./MissionList"
 import ProjectList from "./ProjectList"
+import NewComponent from "./NewComponent"
 
 
 const App = () => {
@@ -15,18 +16,8 @@ const App = () => {
       <div className="App">
         <Route exact path ="/" component={LoginPage}/>
         <PrivateRoute exact path="/essentials">
-          {/* <div className="listContainer">
-            <div className="valueContainer">
-              <ValueList />
-            </div>
-            <div className="projectContainer">
-            <ProjectList/>
-            </div>
-            <div className="missionContainer">
-              <MissionList/>
-            </div>
-          </div> */}
-          <h1>Hello</h1>
+
+          <NewComponent/>
   
         </PrivateRoute>
       </div>

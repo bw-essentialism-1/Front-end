@@ -111,7 +111,7 @@ function LoginPage(props) {
 
   const loginToApp = event => {
     event.preventDefault();
-    axiosWithAuth().post('https://bw-essentialism-1.herokuapp.com/api/login', credentials)
+    axiosWithAuth().post('https://bw-essentialism-1.herokuapp.com/api/auth/login', credentials)
     .then(res => {
       // console.log(res)
       window.localStorage.setItem('token', res.data.token);
@@ -137,7 +137,7 @@ function LoginPage(props) {
         setUsers(res.data.data)
       })
       .catch(err => {
-        debugger
+        console.log(err)
       })
   }
 
@@ -215,7 +215,7 @@ function LoginPage(props) {
             </div>
           </TopCard>
           {/* <TimelineComponent></TimelineComponent>   */}
-          <div className='user-container'>
+          {/* <div className='user-container'>
             {
               users.map(user => {
                 return(
@@ -223,7 +223,7 @@ function LoginPage(props) {
                 )
               })
             }
-          </div> 
+          </div>  */}
         </header>
       </div>
 
