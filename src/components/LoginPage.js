@@ -130,20 +130,20 @@ function LoginPage(props) {
 
 
   //mock data//
-  const getUsers = () => {
-    axios.get(`${url}`)
-      .then(res => {
-        console.log(res.data.data)
-        setUsers(res.data.data)
-      })
-      .catch(err => {
-        console.log(err)
-      })
-  }
+  // const getUsers = () => {
+  //   axios.get(`${url}`)
+  //     .then(res => {
+  //       console.log(res.data.data)
+  //       setUsers(res.data.data)
+  //     })
+  //     .catch(err => {
+  //       console.log(err)
+  //     })
+  // }
 
-  useEffect(() => {
-    getUsers();
-  }, []);
+  // useEffect(() => {
+  //   getUsers();
+  // }, []);
 
 
   //gsap//
